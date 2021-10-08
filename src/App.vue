@@ -1,18 +1,26 @@
+<script>
+import Home from './views/Home.vue'
+
+export default {
+  components: { Home }
+}
+</script>
 <template>
-  <div class="home">
-    <router-link class="logo" to="/"><img class="logo" src="./assets/logo.png"></router-link>
+  <div class="app">
+    <Home />
   </div>
-  <router-view/>
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-.logo {
-  width: 150px;
 }
 </style>
