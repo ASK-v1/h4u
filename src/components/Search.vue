@@ -22,7 +22,6 @@ export default {
   margin-right: 26%;
   margin-left: 26%;
 }
-
 .search input {
   width: 300px;
   height: 50px;
@@ -31,21 +30,18 @@ export default {
   font-family: Arial;
   border-radius: 5px;
 }
-
 .search h1 {
   color: #00ffff;
   font-size: 30px;
   font-family: Arial;
   margin-bottom: 20px;
 }
-
 .search p {
   color: #ffffff;
   font-size: 20px;
   font-family: Arial;
   margin-bottom: 20px;
 }
-
 .search .search_button {
   background-color: #00ffff;
   border-radius: 5px;
@@ -58,12 +54,6 @@ export default {
   text-decoration: none;
   margin-left: 30px;
 }
-
-.search img {
-  text-align: center;
-  text-justify: auto;
-}
-
 .search .search_button:hover {
   background-color: #77ffff;
 }

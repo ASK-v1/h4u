@@ -27,10 +27,10 @@ export default {
 
 <style>
 .home_search {
-  background-image: url("../assets/4.png");
+  background-image: url("../assets/home.png");
   background-size: cover;
   background-repeat: no-repeat;
   padding: 120px;
-  margin-top: 0.150%;
+  margin-top: 0.1%;
 }
 </style>

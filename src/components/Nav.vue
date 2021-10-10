@@ -23,7 +23,7 @@ export default {
   width: 150px;
 }
 .login img{
-  margin: 0 30px 0 0;
   width: 33px;
+  margin-right: 30px;
 }
 </style>
