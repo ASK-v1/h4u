@@ -6,8 +6,8 @@ export default {
 
 <template>
   <div class="nav">
-      <router-link to="/" class="logo"><img src="../assets/logo.png"></router-link>
-      <router-link to="/login" class="login"><img src="../assets/icons/user.png"></router-link>
+    <router-link to="/" class="logo"><img src="../assets/logo.png"></router-link>
+    <router-link to="/login" class="login"><img src="../assets/icons/user.png"></router-link>
   </div>
 </template>
 

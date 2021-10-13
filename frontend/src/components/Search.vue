@@ -15,31 +15,29 @@ export default {
 
 <style>
 .search {
-  padding: 30px 60px;
+  padding: 30px;
   border-radius:  10px;
   background-color: #262636;
   text-align: center;
   margin-right: 26%;
   margin-left: 26%;
+  font-family: Arial;
 }
 .search input {
   width: 300px;
   height: 50px;
   outline: none;
   font-size: 16px;
-  font-family: Arial;
   border-radius: 5px;
 }
 .search h1 {
   color: #00ffff;
   font-size: 30px;
-  font-family: Arial;
   margin-bottom: 20px;
 }
 .search p {
   color: #ffffff;
   font-size: 20px;
-  font-family: Arial;
   margin-bottom: 20px;
 }
 .search .search_button {
@@ -47,7 +45,6 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   color: #000000;
-  font-family: Arial;
   font-size: 16px;
   font-weight: bold;
   padding: 17px 23px;
@@ -56,5 +53,12 @@ export default {
 }
 .search .search_button:hover {
   background-color: #77ffff;
+}
+
+@media (max-width: 1290px) {
+  .search {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
 }
 </style>

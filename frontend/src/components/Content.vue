@@ -23,7 +23,7 @@ export default {
   <div class="content_2">
     <div class="signin">
       <img src="../assets/rent.jpg">
-      <a href="#" class="signin_button">Sing in</a>
+      <router-link to="/login" class="signin_button">Sing in</router-link>
     </div>
   </div>
 </div>
@@ -96,13 +96,11 @@ li:hover {
   font-family: Arial;
   font-size: 16px;
   font-weight: bold;
-  padding: 13px 43px;
+  padding: 14px 42px;
   text-decoration: none;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
 }
-
 .signin .signin_button:hover {
   background-color: #77ffff;
 }
-
 </style>
