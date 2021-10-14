@@ -18,7 +18,7 @@ export default {
           <input type="text" name="name" placeholder="Last name">
         </label>
         <label>
-          <input type="email" name="email" placeholder="E-mail">
+          <input type="email" name="email" placeholder="Email">
         </label>
         <label>
           <input type="password" name="password" placeholder="Password">

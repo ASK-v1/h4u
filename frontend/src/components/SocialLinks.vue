@@ -21,7 +21,7 @@ export default {
 
 <style>
 .links {
-  padding: 20px;
+  padding: 50px;
   background-color: #262636;
   text-align: center;
 }

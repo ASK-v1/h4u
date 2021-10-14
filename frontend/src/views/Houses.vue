@@ -10,7 +10,6 @@ export default {
   components: { Nav, Filters, Links, HouseCards, Sort }
 }
 </script>
-
 <template>
   <div class="houses">
     <div class="houses_nav">
@@ -30,5 +29,19 @@ export default {
 </template>
 
 <style>
+.houses_filters_sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 30px;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.16);
+}
 
+.houses_housecards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3%;
+  margin-bottom: 33%;
+}
 </style>
