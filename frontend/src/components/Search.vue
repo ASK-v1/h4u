@@ -1,6 +1,6 @@
 <script>
 export default {
-
+  name: 'Search'
 }
 </script>
 
@@ -9,7 +9,7 @@ export default {
   <h1>Search properties to rent</h1>
   <p>The leading rental website in the USA</p>
   <input type="text" placeholder="Search city, neighbourhood, adress" v-model="searchQuery" />
-  <a href="#" class="search_button">Search</a>
+  <router-link to="/houses" class="search_button">Search</router-link>
 </div>
 </template>
 
