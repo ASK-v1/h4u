@@ -77,14 +77,18 @@ li:hover {
 
 .signin {
   display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.356);
   margin-top: 5%;
   margin-bottom: 5%;
   align-items: center;
   justify-content: center;
+  margin-left: 27%;
+  margin-right: 27%;
 }
 
 .signin img{
-  border-radius: 10px;
   width: 500px;
   height: 300px;
 }
@@ -102,5 +106,11 @@ li:hover {
 }
 .signin .signin_button:hover {
   background-color: #77ffff;
+}
+@media (max-width: 1400px) {
+  .signin {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
 }
 </style>

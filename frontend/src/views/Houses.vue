@@ -32,7 +32,7 @@ export default {
 .houses_filters_sort {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 30px;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.16);
 }

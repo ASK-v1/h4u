@@ -9,14 +9,14 @@ export default {
   <h1>Search properties to rent</h1>
   <p>The leading rental website in the USA</p>
   <input type="text" placeholder="Search city, neighbourhood, adress" v-model="searchQuery" />
-  <router-link to="/houses" class="search_button">Search</router-link>
+  <router-link to="/house" class="search_button">Search</router-link>
 </div>
 </template>
 
 <style>
 .search {
   padding: 30px;
-  border-radius:  10px;
+  border-radius: 10px;
   background-color: #262636;
   text-align: center;
   margin-right: 26%;
@@ -55,7 +55,7 @@ export default {
   background-color: #77ffff;
 }
 
-@media (max-width: 1290px) {
+@media (max-width: 1400px) {
   .search {
     margin-right: 10%;
     margin-left: 10%;

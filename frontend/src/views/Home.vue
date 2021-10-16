@@ -30,7 +30,6 @@ export default {
   background-image: url("../assets/home.png");
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 120px;
-  margin-top: 0.1%;
+  padding: 150px;
 }
 </style>

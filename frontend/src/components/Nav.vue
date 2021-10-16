@@ -13,17 +13,17 @@ export default {
 
 <style>
 .nav {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: #262636;
 }
 .logo img {
   width: 150px;
 }
 .login img{
-  width: 33px;
+  width: 30px;
   margin-right: 30px;
 }
 </style>

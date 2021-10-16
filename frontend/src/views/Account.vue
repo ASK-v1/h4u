@@ -37,7 +37,7 @@ export default {
       <h4>{{ email }}</h4>
     </div>
     <label>
-      <button class="button_save" type="submit"><img src="../assets/icons/save.png" width="25"> <p>Saved houses</p> </button>
+      <button class="button_save" type="submit"><img src="../assets/icons/heart2.png" width="34"></button>
     </label>
     <label>
       <button class="button_logout" type="submit">Log out</button>
@@ -79,9 +79,8 @@ export default {
 .account .button_save {
   background-color: #ffffff;
   font-family: Arial;
-  font-size: 14px;
   font-weight: bold;
-  padding: 0px 74px;
+  padding: 0px 103px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
   border-color: #77ffff;

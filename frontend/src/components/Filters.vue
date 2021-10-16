@@ -8,7 +8,8 @@ export default {
   <div class="filters">
     <div class="filters_bedrooms">
       <label for="bedrooms">Bedrooms</label>
-      <select class="bedroom_min">
+      <div class="bedroom_min_max">
+        <select class="bedroom_min">
           <option value="min">No min</option>
           <option value="studio">Studio</option>
           <option value="1">1</option>
@@ -20,8 +21,8 @@ export default {
           <option value="7">7</option>
           <option value="8">8</option>
           <option value="9">9</option>
-      </select>
-      <select class="bedroom_max">
+        </select>
+        <select class="bedroom_max">
           <option value="max">No max</option>
           <option value="studio">Studio</option>
           <option value="1">1</option>
@@ -33,44 +34,47 @@ export default {
           <option value="7">7</option>
           <option value="8">8</option>
           <option value="9">9</option>
-      </select>
+        </select>
+      </div>
     </div>
     <div class="filters_price">
       <label for="price">Price range</label>
-      <select class="price_min">
-          <option value="min">No min</option>
-          <option value="500">$500</option>
-          <option value="750">$750</option>
-          <option value="1000">$1000</option>
-          <option value="1250">$1250</option>
-          <option value="1500">$1500</option>
-          <option value="1750">$1750</option>
-          <option value="2000">$2000</option>
-          <option value="2500">$2500</option>
-          <option value="3000">$3000</option>
-          <option value="3500">$3500</option>
-          <option value="3500">$3500</option>
-          <option value="4000">$4000</option>
-          <option value="4500">$4500</option>
-          <option value="5000">$5000</option>
-      </select>
-      <select class="price_max">
-          <option value="max">No max</option>
-          <option value="500">$500</option>
-          <option value="750">$750</option>
-          <option value="1000">$1000</option>
-          <option value="1250">$1250</option>
-          <option value="1500">$1500</option>
-          <option value="1750">$1750</option>
-          <option value="2000">$2000</option>
-          <option value="2500">$2500</option>
-          <option value="3000">$3000</option>
-          <option value="3500">$3500</option>
-          <option value="3500">$3500</option>
-          <option value="4000">$4000</option>
-          <option value="4500">$4500</option>
-          <option value="5000">$5000</option>
-      </select>
+      <div class="price_min_max">
+        <select class="price_min">
+            <option value="min">No min</option>
+            <option value="500">$500</option>
+            <option value="750">$750</option>
+            <option value="1000">$1000</option>
+            <option value="1250">$1250</option>
+            <option value="1500">$1500</option>
+            <option value="1750">$1750</option>
+            <option value="2000">$2000</option>
+            <option value="2500">$2500</option>
+            <option value="3000">$3000</option>
+            <option value="3500">$3500</option>
+            <option value="3500">$3500</option>
+            <option value="4000">$4000</option>
+            <option value="4500">$4500</option>
+            <option value="5000">$5000</option>
+        </select>
+        <select class="price_max">
+            <option value="max">No max</option>
+            <option value="500">$500</option>
+            <option value="750">$750</option>
+            <option value="1000">$1000</option>
+            <option value="1250">$1250</option>
+            <option value="1500">$1500</option>
+            <option value="1750">$1750</option>
+            <option value="2000">$2000</option>
+            <option value="2500">$2500</option>
+            <option value="3000">$3000</option>
+            <option value="3500">$3500</option>
+            <option value="3500">$3500</option>
+            <option value="4000">$4000</option>
+            <option value="4500">$4500</option>
+            <option value="5000">$5000</option>
+        </select>
+      </div>
     </div>
     <div class="filters_area">
       <label for="area">Floor area</label>
@@ -111,8 +115,23 @@ export default {
   padding: 8px 40px;
   color: dimgray;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
 }
+
+.filters_bedrooms select {
+  padding: 8px 10px;
+}
+.filters_price select {
+  padding: 8px 10px;
+}
+.filters_area select {
+  padding: 8px 20px;
+}
+
+.bedroom_min_max, .price_min_max{
+  display: flex;
+  gap: 5px;
+}
+
 .filters select:hover {
   color: black;
 }

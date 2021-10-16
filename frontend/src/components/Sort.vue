@@ -17,10 +17,11 @@ export default {
 
 <style>
 .sort select {
-  padding: 10px 50px;
+  padding: 10px 60px;
   margin-top: 10%;
+  font-weight: 400;
+  font-size: 14px;
   color: dimgray;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
 }
 .sort select:hover {
   color: black;
