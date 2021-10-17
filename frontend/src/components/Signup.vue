@@ -21,6 +21,9 @@ export default {
           <input type="email" name="email" placeholder="Email">
         </label>
         <label>
+          <input type="tel" name="phone" maxlength="14" placeholder="Phone">
+        </label>
+        <label>
           <input type="password" name="password" placeholder="Password">
         </label>
         <label>

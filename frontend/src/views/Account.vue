@@ -22,7 +22,6 @@ export default {
   <div class="account">
     <div class="personal">
       <img src="../assets/icons/account.png">
-      <h2>Personal</h2>
     </div>
     <div class="name">
       <p>Name</p>
@@ -37,7 +36,7 @@ export default {
       <h4>{{ email }}</h4>
     </div>
     <label>
-      <button class="button_save" type="submit"><img src="../assets/icons/heart2.png" width="34"></button>
+      <button class="button_save" type="submit">Saved Houses</button>
     </label>
     <label>
       <button class="button_logout" type="submit">Log out</button>
@@ -80,7 +79,7 @@ export default {
   background-color: #ffffff;
   font-family: Arial;
   font-weight: bold;
-  padding: 0px 103px;
+  padding: 10px 75px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
   border-color: #77ffff;

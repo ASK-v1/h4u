@@ -18,7 +18,7 @@ export default {
 <template>
   <div class="house_cards">
     <div class="house_cards_image">
-      <a href=""><img :src="imgsrc[0]"/></a>
+      <router-link to="/house"><img :src="imgsrc[0]"/></router-link>
     </div>
     <div class="house_cards_title">
       <h1>{{ title }}</h1>
