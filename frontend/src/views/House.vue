@@ -34,13 +34,9 @@ export default {
 .house_housecard {
   display: flex;
   justify-content: center;
-  margin-top: 1%;
-  margin-bottom: 1%;
 }
 .house_features {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 10%;
   justify-content: space-evenly;
 }
 </style>

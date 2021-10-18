@@ -56,6 +56,8 @@ export default {
   gap: 5px;
   padding-bottom: 20px;
   border-bottom: 2px solid #00ffff;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .house_card .photo_1 .buyuk img {
@@ -150,6 +152,7 @@ export default {
   width: 100px;
   height: 50px;
 }
+
 .photos_save .save:hover {
   background-color: #262636;
   color: white;

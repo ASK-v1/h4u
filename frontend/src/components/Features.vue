@@ -3,7 +3,6 @@ export default {
   name: 'Features',
   data () {
     return {
-      description: '<ul><li>Rent is €1.600</li><li>Max. 2 home sharers, so 2 registrations are possible</li><li>Deposit is € 2.500</li><li>Temporary rental, maximum 2 years</li><li>No annual rent increase</li><li>Free parking</li><li>Video call is not (yet) possible</li><li>The property will be delivered furnished</li><ul>',
       title: 'Chicago Ave',
       location: 'Chicago, IL 2021',
       price: '1,600',
@@ -34,73 +33,93 @@ export default {
         </div>
         <div class="header_2_rooms">
           <img src="../assets/icons/bed.png" width="25">
-          <h4>{{ rooms }}</h4>
+          <h4>{{ rooms }} rooms</h4>
         </div>
       </div>
       <div class="features_header_3">
-        <img src="../assets/icons/dollar.png" width="25">
-        <h3>{{ price }} p/m</h3>
+        <h2>${{ price }} per month</h2>
       </div>
     </div>
-    <div class="description">
-      <h2>Description</h2>
-      <h5 v-html="description"></h5>
-    </div>
-    <h2>Features</h2>
-    <div class="features_price">
-      <p>Rental price</p>
-      <h4>${{ price }} per month</h4>
-    </div>
-    <div class="features_since">
-      <p>Offered since</p>
-      <h4>{{ offered_since }}</h4>
-    </div>
-    <div class="features_area">
-      <p>Living area</p>
-      <h4>{{ area }} m²</h4>
-    </div>
-    <div class="features_type">
-      <p>Type of house</p>
-      <h4>{{ type }}</h4>
-    </div>
-    <div class="features_rooms">
-      <p>Number of rooms</p>
-      <h4>{{ rooms }}</h4>
-    </div>
-    <div class="features_balcony">
-      <p>Balcony</p>
-      <h4>{{ balcony }}</h4>
-    </div>
-    <div class="features_garden">
-      <p>Garden</p>
-      <h4>{{ garden }}</h4>
-    </div>
-    <div class="features_garage">
-      <p>Garage</p>
-      <h4>{{ garage }}</h4>
-    </div>
-    <div class="features_energy">
-      <p>Energy rating</p>
-      <h4>{{ energy }}</h4>
+    <div class="feature_items">
+      <h2>Features</h2>
+      <div class="features_price">
+        <p>Rental price</p>
+        <h4>${{ price }} per month</h4>
+      </div>
+      <div class="features_since">
+        <p>Offered since</p>
+        <h4>{{ offered_since }}</h4>
+      </div>
+      <div class="features_area">
+        <p>Living area</p>
+        <h4>{{ area }} m²</h4>
+      </div>
+      <div class="features_type">
+        <p>Type of house</p>
+        <h4>{{ type }}</h4>
+      </div>
+      <div class="features_rooms">
+        <p>Number of rooms</p>
+        <h4>{{ rooms }}</h4>
+      </div>
+      <div class="features_balcony">
+        <p>Balcony</p>
+        <h4>{{ balcony }}</h4>
+      </div>
+      <div class="features_garden">
+        <p>Garden</p>
+        <h4>{{ garden }}</h4>
+      </div>
+      <div class="features_garage">
+        <p>Garage</p>
+        <h4>{{ garage }}</h4>
+      </div>
+      <div class="features_energy">
+        <p>Energy rating</p>
+        <h4>{{ energy }}</h4>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
-* {
-  font-family: sans-serif;
-}
-
 .features {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+}
+
+.features .feature_items {
+  padding: 50px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.25);
+}
+
+.features .feature_items p {
+  margin-right: 100px;
+}
+
+.features h2 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+
+.features p {
+  color: #999999;
 }
 
 .features .features_header {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+}
+
+.features .features_header h4 {
+  font-weight: normal;
+}
+
+.features .feature_items h4 {
+  font-weight: normal;
 }
 
 .features .features_header .features_header_1 {
@@ -128,6 +147,7 @@ export default {
   gap: 5px;
   align-items: center;
 }
+
 .features .features_header .features_header_3 {
   display: flex;
   flex-direction: row;
@@ -135,38 +155,12 @@ export default {
   align-items: center;
 }
 
-.features .description {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5%;
-  gap: 10px;
-}
-
-.features h2 {
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-}
-.features h5 {
-  font-size: 15px;
-  font-weight:normal;
-}
-.features p {
-  color: #999999;
-}
-
 .features_price {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
-}
-
-.features_price {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid #dadada;
-  justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_since {
@@ -174,6 +168,7 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_area {
@@ -181,6 +176,7 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_type {
@@ -188,6 +184,7 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_rooms {
@@ -195,6 +192,7 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_balcony {
@@ -202,6 +200,7 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_garden {
@@ -209,6 +208,7 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_garage {
@@ -216,6 +216,7 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
+  margin-bottom: 20px;
 }
 
 .features_energy {
@@ -223,6 +224,6 @@ export default {
   flex-direction: row;
   border-bottom: 1px solid #dadada;
   justify-content:space-between;
-  gap: 25px;
+  margin-bottom: 20px;
 }
 </style>

@@ -33,9 +33,9 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 40px;
+  padding: 50px;
   gap: 20px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.356);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.25);
   margin-bottom: 400px;
 }
 
