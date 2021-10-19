@@ -66,7 +66,7 @@ export default {
 .filters {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 20px;
 }
 
 .filters label {
@@ -78,20 +78,9 @@ export default {
 .filters select {
   color: dimgray;
   border-radius: 15px;
+  padding: 10px 30px;
 }
 
-.filters_rooms select {
-  padding: 10px 30px;
-}
-.filters_price select {
-  padding: 10px 30px;
-}
-.filters_area select {
-  padding: 10px 30px;
-}
-.filters_type select {
-  padding: 10px 30px;
-}
 .filters select:hover {
   color: black;
 }
@@ -100,27 +89,27 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .filters_price {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .filters_type{
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .filters_area{
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 5px;
+  gap: 10px;
 }
 </style>
