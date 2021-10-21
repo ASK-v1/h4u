@@ -23,7 +23,7 @@ export default {
   <div class="content_2">
     <div class="signin">
       <img src="../assets/rent.jpg">
-      <router-link to="/login" class="signin_button">Sing in</router-link>
+      <router-link to="/register" class="signin_button">Register</router-link>
     </div>
   </div>
 </div>

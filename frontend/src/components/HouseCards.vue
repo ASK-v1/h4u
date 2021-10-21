@@ -1,14 +1,20 @@
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'HouseCards',
   data () {
     return {
-      imgsrc: ['https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80'],
-      title: 'Chicago Ave',
-      location: 'Chicago, IL 2021',
-      price: '1600',
-      rooms: '3',
-      area: '115'
+
+    }
+  },
+  computed: {
+  },
+  methods: {
+    ...mapActions(['getHouses']),
+    async function () {
+      const houses = await this.getHouses()
+      return houses
     }
   }
 }
@@ -16,7 +22,7 @@ export default {
 
 <template>
 <div class="main_card">
-  <div v-for='img in imgsrc' :key='img._id' class="house_cards">
+  <div v-for='img in houses' :key='img._id' class="house_cards">
     <div class="house_cards_image">
       <router-link to="/house"><img :src="img"/></router-link>
     </div>
