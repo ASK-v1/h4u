@@ -1,18 +1,31 @@
 <script>
+import Spinner from '../components/Spinner.vue'
+
+import { mapActions } from 'vuex'
+
 export default {
   name: 'HouseCard',
+  components: { Spinner },
   data () {
     return {
-      images: ['https://images.unsplash.com/photo-1601056645918-329b756e54fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2067&q=80', 'https://images.unsplash.com/photo-1574286962959-1c2cddf17530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80', 'https://images.unsplash.com/photo-1560449752-ac541afdd6b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80', 'https://images.unsplash.com/photo-1560448075-cbc16bb4af8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80', 'https://images.unsplash.com/photo-1560185127-1902ccdc5094?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'],
-      id: 0
+      num: 0,
+      houses: [],
+      spinner: true,
+      url: []
     }
   },
+  async mounted () {
+    this.houses = await this.getHouses()
+    this.url = this.houses[0].url
+    this.spinner = false
+  },
   methods: {
+    ...mapActions(['getHouses']),
     nbutton () {
-      ++this.id
+      ++this.num
     },
     pbutton () {
-      --this.id
+      --this.num
     }
   }
 }
@@ -20,16 +33,19 @@ export default {
 
 <template>
   <div class="house_card">
+    <div v-if="spinner" class="spinner">
+      <Spinner />
+    </div>
     <div class="gallery_button">
-      <button v-if="!(id === 0)" @click="pbutton" class="a_button">«</button>
+      <button v-if="!(num === 0)" @click="pbutton" class="a_button">«</button>
       <button v-else class="na_button">«</button>
     </div>
     <div class="photo_1">
-      <a v-if="(id === 0)" class="kucuk" :href="images[id]"><img :src="images[id]"></a>
-      <a v-if="!(id === 0)" class="buyuk" :href="images[id]"><img :src="images[id]"></a>
+      <a v-if="(num === 0)" class="kucuk" :href="url[num]"><img :src="url[num]"></a>
+      <a v-else class="buyuk" :href="url[num]"><img :src="url[num]"></a>
       <div class="photos_save">
         <div class="photos">
-          <h4>{{ images.length }}</h4>
+          <h4>{{ url.length }}</h4>
           <p>Photos</p>
         </div>
         <div class="save">
@@ -39,11 +55,11 @@ export default {
       </div>
     </div>
     <div class="photo_2">
-      <a v-if="id === 0" :href="images[id+1]"><img :src="images[id+1]"></a>
-      <a v-if="id === 0" :href="images[id+2]"><img :src="images[id+2]"></a>
+      <a v-if="num === 0" :href="url[num+1]"><img :src="url[num+1]"></a>
+      <a v-if="num === 0" :href="url[num+2]"><img :src="url[num+2]"></a>
     </div>
     <div class="gallery_button">
-      <button v-if="!(id === images.length - 1)" @click="nbutton" class="a_button">»</button>
+      <button v-if="!(num === url.length - 1)" @click="nbutton" class="a_button">»</button>
       <button class="na_button" v-else>»</button>
     </div>
   </div>
@@ -61,14 +77,14 @@ export default {
 }
 
 .house_card .photo_1 .buyuk img {
-  width: 54vw;
+  width: 60vw;
   height: 30vw;
   border-radius: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
 }
 
 .house_card .photo_1 .kucuk img {
-  width: 36vw;
+  width: 40vw;
   height: 30vw;
   border-radius: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
@@ -76,7 +92,7 @@ export default {
 
 .house_card .photo_2 a img {
   display: grid;
-  width: 18vw;
+  width: 20vw;
   height: 15vw;
   border-radius: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);

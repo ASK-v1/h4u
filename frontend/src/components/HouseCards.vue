@@ -1,15 +1,20 @@
 <script>
+import Spinner from '../components/Spinner.vue'
+
 import { mapActions } from 'vuex'
 
 export default {
   name: 'HouseCards',
+  components: { Spinner },
   data () {
     return {
-      houses: []
+      houses: [],
+      spinner: true
     }
   },
   async mounted () {
     this.houses = await this.getHouses()
+    this.spinner = false
   },
   methods: {
     ...mapActions(['getHouses'])
@@ -19,7 +24,10 @@ export default {
 
 <template>
 <div class="main_card">
-  <div v-for='house in this.houses' :key='house.id' class="house_cards">
+  <div v-if="spinner" class="spinner">
+    <Spinner />
+  </div>
+  <div v-for='house in houses' :key='house.id' class="house_cards">
     <div class="house_cards_image">
       <router-link to="/house"><img :src="house.url[0]"/></router-link>
     </div>
