@@ -5,48 +5,45 @@ export default {
   name: 'HouseCards',
   data () {
     return {
-
+      houses: []
     }
   },
-  computed: {
+  async mounted () {
+    this.houses = await this.getHouses()
   },
   methods: {
-    ...mapActions(['getHouses']),
-    async function () {
-      const houses = await this.getHouses()
-      return houses
-    }
+    ...mapActions(['getHouses'])
   }
 }
 </script>
 
 <template>
 <div class="main_card">
-  <div v-for='img in houses' :key='img._id' class="house_cards">
+  <div v-for='house in this.houses' :key='house.id' class="house_cards">
     <div class="house_cards_image">
-      <router-link to="/house"><img :src="img"/></router-link>
+      <router-link to="/house"><img :src="house.url[0]"/></router-link>
     </div>
     <div class="house_cards_all">
       <div class="house_cards_title_location">
         <div class="house_cards_title">
-          <h2>{{ title }}</h2>
+          <h2>{{ house.title }}</h2>
         </div>
         <div class="house_cards_location">
-          <p>{{ location }}</p>
+          <p>{{ house.location }}</p>
         </div>
       </div>
       <div class="house_cards_items">
         <div class="house_cards_area">
           <img src="../assets/icons/area.png" width="25">
-          <h3>{{ area }} m²</h3>
+          <h3>{{ house.area }} m²</h3>
         </div>
         <div class="house_cards_rooms">
           <img src="../assets/icons/bed.png" width="25">
-          <h3>{{ rooms }} rooms</h3>
+          <h3>{{ house.rooms }} rooms</h3>
         </div>
       </div>
       <div class="house_cards_price">
-        <h2>${{ price }} per month</h2>
+        <h2>${{ house.price }} per month</h2>
       </div>
     </div>
   </div>

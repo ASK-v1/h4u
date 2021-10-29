@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const { Schema, model } = require('mongoose')
 
-const HouseSchema = new mongoose.Schema({
-  
+const houseSchema = new Schema({
+  url: [],
   title: String,
   location: String,
   price: Number,
@@ -15,5 +15,6 @@ const HouseSchema = new mongoose.Schema({
   garage: String
 })
 
+const House = model('House', houseSchema)
 
-module.exports = mongoose.model('House', HouseSchema)
+module.exports = { House }

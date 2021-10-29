@@ -23,11 +23,6 @@ const routes = [
     component: Login
   },
   {
-    path: '/account',
-    name: 'Account',
-    component: Account
-  },
-  {
     path: '/houses',
     name: 'Houses',
     component: Houses
@@ -36,6 +31,11 @@ const routes = [
     path: '/house',
     name: 'House',
     component: House
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: Account
   }
 ]
 

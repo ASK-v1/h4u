@@ -2,121 +2,99 @@
 import Nav from '../components/Nav.vue'
 import Links from '../components/SocialLinks.vue'
 
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'Account',
   components: { Nav, Links },
-  data () {
-    return {
-      name: 'ASK',
-      email: 'ask@gmail.com',
-      phone: '+90 999 99 99'
+  async mounted () {
+    await this.check()
+  },
+  computed: {
+    ...mapGetters(['user', 'isLoggedIn'])
+  },
+  methods: {
+    async check () {
+      if (!this.isLoggedIn) this.$router.push('login')
+    },
+    ...mapActions(['fetchUser', 'logoutUser']),
+    async logout () {
+      try {
+        await this.logoutUser()
+        this.$router.push('login')
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }
 </script>
 
 <template>
-  <div class="home_nav">
-    <Nav />
-  </div>
   <div class="account">
-    <div class="personal">
-      <img src="../assets/icons/account.png">
+    <div class="home_nav">
+      <Nav />
     </div>
-    <div class="name">
-      <p>Name</p>
-      <h4>{{ name }}</h4>
+    <div class="info">
+      <div class="personal">
+        <img src="../assets/icons/account.png">
+      </div>
+      <div class="name">
+        <p>Name</p>
+        <h4>{{ this.user.firstName }}</h4>
+      </div>
+      <div class="phone">
+        <p>Phone</p>
+        <h4>{{ this.user.phone }}</h4>
+      </div>
+      <div class="email">
+        <p>Email address</p>
+        <h4>{{ this.user.email }}</h4>
+      </div>
     </div>
-    <div class="phone">
-      <p>Phone</p>
-      <h4>{{ phone }}</h4>
+    <div class="account_buttons">
+        <button class="account_button_save" type="submit">Saved Houses</button>
+        <button class="account_button_logout" @click="logout">Log out</button>
     </div>
-    <div class="email">
-      <p>Email address</p>
-      <h4>{{ email }}</h4>
+    <div class="account_links">
+      <Links />
     </div>
-    <label>
-      <button class="button_save" type="submit">Saved Houses</button>
-    </label>
-    <label>
-      <button class="button_logout" type="submit">Log out</button>
-    </label>
-    <div class="delete">
-      <label>
-        <h3>Delete account</h3>
-        <p>If you no longer wish to use your account, you can easily delete it.</p>
-        <button class="button_delete" type="submit">Delete Account</button>
-      </label>
-    </div>
-  </div>
-  <div class="account_links">
-    <Links />
   </div>
 </template>
 
 <style>
-.account {
+.account .info{
   margin-top: 3%;
+  margin-bottom: 3%;
   display: flex;
+  text-align: center;
+  align-content: center;
   flex-direction: column;
   text-align: center;
+  gap: 40px;
 }
 
-.account .name {
-  margin-top: 2%;
-  margin-bottom: 1%;
+.account .account_buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  margin-right: 43%;
+  margin-left: 43%;
+  gap: 120px;
 }
 
-.account .phone {
-  margin-bottom: 1%;
-}
-
-.account .email {
-  margin-bottom: 5%;
-}
-
-.account .button_save {
-  background-color: #ffffff;
+.account .account_button_logout {
   font-family: Arial;
   font-weight: bold;
-  padding: 10px 75px;
+  padding: 15px;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
-  border-color: #77ffff;
+  border-color: #ff7777;
 }
-
-.account .button_logout {
-  margin-top: 2%;
-  background-color: #ffffff;
+.account .account_button_save {
   font-family: Arial;
-  font-size: 14px;
   font-weight: bold;
-  padding: 10px 95px;
+  padding: 15px;
   cursor: pointer;
   border-color: #77ffff;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
 }
-
-.account .button_delete {
-  background-color: #ffffff;
-  font-family: Arial;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 10px 70px;
-  cursor: pointer;
-  border-color: #ff0000;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
-}
-.account .delete {
-  margin-top: 5%;
-}
-
-.delete p {
-  margin-bottom: 1%;
-}
-
-.account_links {
-  margin-top: 10%;
-}
-
 </style>

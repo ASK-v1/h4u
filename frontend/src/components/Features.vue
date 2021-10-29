@@ -88,38 +88,38 @@ export default {
   flex-direction: column;
 }
 
-.features .feature_items {
-  padding: 50px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.25);
-}
-
 .features .feature_items p {
-  margin-right: 100px;
+  margin-right: 150px;
+  font-size: 20px;
 }
 
 .features h2 {
   display: flex;
   flex-direction: row;
   margin-bottom: 25px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .features p {
   color: #999999;
+  font-size: 20px;
 }
 
 .features .features_header {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 10%;
 }
 
 .features .features_header h4 {
   font-weight: normal;
+  font-size: 18px;
 }
 
 .features .feature_items h4 {
   font-weight: normal;
+  font-size: 20px;
 }
 
 .features .features_header .features_header_1 {

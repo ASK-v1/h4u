@@ -7,7 +7,10 @@ import Contact from '../components/Contact.vue'
 
 export default {
   name: 'House',
-  components: { Nav, Links, HouseCard, Features, Contact }
+  components: { Nav, Links, HouseCard, Features, Contact },
+  mounted () {
+    window.scrollTo(0, 0)
+  }
 }
 </script>
 

@@ -9,20 +9,34 @@ export default {
   components: { Nav, Links },
   data () {
     return {
-      form: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        password: ''
-      }
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      phone: '',
+      showError: false
     }
   },
+  mounted () {
+    window.scrollTo(0, 0)
+  },
   methods: {
-    ...mapActions(['Register']),
-    async submit () {
-      await this.Register(this.form)
-      this.$router.push('/')
+    ...mapActions(['registerUser']),
+    async register () {
+      const data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+        phone: this.phone
+      }
+      try {
+        await this.registerUser(data)
+        this.$router.push('login')
+      } catch (error) {
+        this.showError = true
+        console.log(error)
+      }
     }
   }
 }
@@ -33,33 +47,33 @@ export default {
     <div class="register_nav">
       <Nav />
     </div>
-    <form class="form_register" @submit.prevent="submit">
+    <div class="error" v-if="this.showError"><h3>Email is invalid or already taken</h3></div>
+    <form class="form_register" @submit.prevent="register">
       <div class="form_title">
         <h1>Register</h1>
       </div>
       <div class="form_row">
-        <label>
-          <input type="text" name="firstName" v-model="form.firstName" placeholder="First name">
-        </label>
-        <label>
-          <input type="text" name="LastName" v-model="form.lastName" placeholder="Last name">
-        </label>
-        <label>
-          <input type="email" name="email" v-model="form.email" placeholder="Email">
-        </label>
-        <label>
-          <input type="tel" name="phone" v-model="form.phone" placeholder="Phone">
-        </label>
-        <label>
-          <input type="password" name="password" v-model="form.password" placeholder="Password">
-        </label>
-        <label>
+        <div>
+          <input type="text" name="firstName" v-model="firstName" placeholder="First name" required>
+        </div>
+        <div>
+          <input type="text" name="LastName" v-model="lastName" placeholder="Last name" required>
+        </div>
+        <div>
+          <input type="email" name="email" v-model="email" placeholder="Email" required>
+        </div>
+        <div>
+          <input type="tel" name="phone" v-model="phone" placeholder="Phone" required>
+        </div>
+        <div>
+          <input type="password" name="password" v-model="password" placeholder="Password" required>
+        </div>
+        <div>
           <button class="button_register" type="submit">Register</button>
-        </label>
+        </div>
       </div>
     </form>
     <div class="register_login">
-      <h5>Already registered?</h5>
       <router-link to="/login" class="login">Login</router-link>
     </div>
     <div class="register_links">
@@ -106,7 +120,7 @@ export default {
   font-family: Arial;
   font-size: 14px;
   font-weight: bold;
-  padding: 10px 102px;
+  padding: 10px 50px;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
   border: none;
   cursor: pointer;
@@ -121,7 +135,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10%;
   gap: 10px;
 }
 
@@ -131,7 +144,7 @@ export default {
   font-family: Arial;
   font-size: 14px;
   font-weight: bold;
-  padding: 10px 111px;
+  padding: 10px 100px;
   cursor: pointer;
   border-color: rgb(0, 0, 0);
   text-decoration: none;
@@ -140,5 +153,11 @@ export default {
 
 .register_login .login:hover {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 3%;
 }
 </style>

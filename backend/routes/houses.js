@@ -1,15 +1,9 @@
-const { houseService } = require('../services')
-
-const router = require('express').Router()
+var express = require('express')
+var router = express.Router()
+const { House } = require('../models/house')
 
 router.get('/', async (req, res) => {
-  res.send(await houseService.load())
+  res.send(await House.find())
 })
-
-router.post('/', async (req, res) => {
-  const house = await houseService.insert(req.body)
-  res.send(house)
-})
-
 
 module.exports = router

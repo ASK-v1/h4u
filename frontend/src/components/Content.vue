@@ -20,7 +20,7 @@ export default {
       <li>Washington</li>
     </ul>
   </div>
-  <div class="content_2">
+  <div v-if="!(this.$store.getters.isLoggedIn)" class="content_2">
     <div class="signin">
       <img src="../assets/rent.jpg">
       <router-link to="/register" class="signin_button">Register</router-link>

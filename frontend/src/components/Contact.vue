@@ -4,7 +4,7 @@ export default {
   data () {
     return {
       contact_title: 'ASK Housing',
-      contact_phone: '+90 999 99 99'
+      contact_phone: '000 999 99 99'
     }
   }
 }
@@ -33,8 +33,8 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 50px;
-  gap: 20px;
+  padding: 75px;
+  gap: 15px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.25);
   margin-bottom: 400px;
 }
