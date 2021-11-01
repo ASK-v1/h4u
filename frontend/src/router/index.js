@@ -23,12 +23,12 @@ const routes = [
     component: Login
   },
   {
-    path: '/houses',
+    path: '/houses/:cityName',
     name: 'Houses',
     component: Houses
   },
   {
-    path: '/house',
+    path: '/houses/house/:houseId',
     name: 'House',
     component: House
   },

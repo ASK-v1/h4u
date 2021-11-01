@@ -13,11 +13,14 @@ export default {
     }
   },
   async mounted () {
-    this.houses = await this.getHouses()
+    await this.getCitySearch()
     this.spinner = false
   },
   methods: {
-    ...mapActions(['getHouses'])
+    ...mapActions(['getSearch', 'getUrl']),
+    async getCitySearch () {
+      this.houses = await this.getSearch(this.$route.params.cityName)
+    }
   }
 }
 </script>
@@ -29,12 +32,12 @@ export default {
   </div>
   <div v-for='house in houses' :key='house.id' class="house_cards">
     <div class="house_cards_image">
-      <router-link to="/house"><img :src="house.url[0]"/></router-link>
+      <router-link :to="`/houses/house/${house._id}`"><img :src="house.url[0]"/></router-link>
     </div>
     <div class="house_cards_all">
       <div class="house_cards_title_location">
         <div class="house_cards_title">
-          <h2>{{ house.title }}</h2>
+          <h2>{{ house.title.charAt(0).toUpperCase() + house.title.slice(1) }}</h2>
         </div>
         <div class="house_cards_location">
           <p>{{ house.location }}</p>
@@ -54,6 +57,9 @@ export default {
         <h2>${{ house.price }} per month</h2>
       </div>
     </div>
+  </div>
+  <div v-if="!spinner" class="total">
+    <h2>{{ houses.length }} homes for rent</h2>
   </div>
 </div>
 </template>
@@ -117,5 +123,13 @@ export default {
   color: #999999;
   font-weight: bold;
   font-size: 1rem;
+}
+.space {
+  margin-bottom: 25%;
+}
+.total {
+  margin-top: 50px;
+  text-align: center;
+  color: #999999;
 }
 </style>

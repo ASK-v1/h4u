@@ -24,7 +24,7 @@ export default {
   left: 50%;
   margin-left: -50px;
   margin-top: -50px;
-  animation: loading 1.5s infinite linear both;
+  animation: loading 1.2s infinite linear both;
 }
 
 .loading-dot {

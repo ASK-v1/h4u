@@ -45,8 +45,12 @@ export default createStore({
       localStorage.removeItem('token')
       delete axios.defaults.headers.common.Authorization
     },
-    async getHouses () {
-      const req = await axios.get('http://localhost:3000/houses')
+    async getSearch ({ commit }, name) {
+      const req = await axios.get(`http://localhost:3000/houses/${name}`)
+      return req.data
+    },
+    async getHouse ({ commit }, id) {
+      const req = await axios.get(`http://localhost:3000/houses/house/${id}`)
       return req.data
     }
   },

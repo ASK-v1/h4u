@@ -84,6 +84,7 @@ export default {
 }
 
 .account .account_button_logout {
+  background-color: white;
   font-family: Arial;
   font-weight: bold;
   padding: 15px;
@@ -91,6 +92,7 @@ export default {
   border-color: #ff7777;
 }
 .account .account_button_save {
+  background-color: white;
   font-family: Arial;
   font-weight: bold;
   padding: 15px;

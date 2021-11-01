@@ -1,6 +1,30 @@
 GET http://localhost:3000/users HTTP/1.1
 
 ###
+
+GET http://localhost:3000/houses/house/617f0dab6fc2486e960a34ec HTTP/1.1
+
+###
+
+
 GET http://localhost:3000/houses HTTP/1.1
 
 ###
+
+POST http://localhost:3000/houses HTTP/1.1
+content-type: application/json
+
+{
+  "url":["https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80","https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80","https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1181&q=80","https://images.unsplash.com/photo-1612152605347-f93296cb657d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80","https://images.unsplash.com/photo-1595329088732-d3b286981166?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80"],
+  "title":"austin",
+  "location":"Michigan Ave",
+  "price":1700,
+  "rooms":3,
+  "area":100,
+  "date":"01.11.2021",
+  "type":"House",
+  "energy":"B",
+  "balcony":"Not Present",
+  "garden":"Present",
+  "garage":"Present"
+}

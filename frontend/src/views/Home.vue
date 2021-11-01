@@ -11,17 +11,19 @@ export default {
 </script>
 
 <template>
-  <div class="home_nav">
-    <Nav />
-  </div>
-  <div class="home_search">
-    <Search />
-  </div>
-  <div class="home_content">
-    <Content />
-  </div>
-  <div class="home_links">
-    <Links />
+  <div class="home">
+    <div class="home_nav">
+      <Nav />
+    </div>
+    <div class="home_search">
+      <Search />
+    </div>
+    <div class="home_content">
+      <Content />
+    </div>
+    <div class="home_links">
+      <Links />
+    </div>
   </div>
 </template>
 

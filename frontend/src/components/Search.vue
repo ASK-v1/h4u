@@ -1,6 +1,11 @@
 <script>
 export default {
-  name: 'Search'
+  name: 'Search',
+  data () {
+    return {
+      cityName: ''
+    }
+  }
 }
 </script>
 
@@ -8,8 +13,9 @@ export default {
 <div class="search">
   <h1>Search properties to rent</h1>
   <p>The leading rental website in the USA</p>
-  <input type="text" placeholder="Search city, neighbourhood, adress" v-model="searchQuery" />
-  <router-link to="/houses" class="search_button">Search</router-link>
+  <input type="text" placeholder="Search city, neighbourhood, adress" v-model="cityName"/>
+  <router-link v-if="cityName" :to="`/houses/${cityName}`" class="search_button">Search</router-link>
+  <router-link v-else  to="/" class="search_button">Search</router-link>
 </div>
 </template>
 

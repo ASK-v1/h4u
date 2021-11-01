@@ -1,20 +1,18 @@
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Features',
   data () {
     return {
-      title: 'Chicago Ave',
-      location: 'Chicago, IL 2021',
-      price: '1,600',
-      rooms: 3,
-      area: 115,
-      offered_since: '11.11.2021',
-      type: 'House',
-      energy: 'B',
-      balcony: 'Present',
-      garden: 'Not present',
-      garage: 'Present'
+      house: {}
     }
+  },
+  async mounted () {
+    this.house = await this.getHouse(this.$route.params.houseId)
+  },
+  methods: {
+    ...mapActions(['getHouse'])
   }
 }
 </script>
@@ -23,60 +21,60 @@ export default {
   <div class="features">
     <div class="features_header">
       <div class="features_header_1">
-        <h1>{{ title }}</h1>
-        <p>{{ location }}</p>
+        <h1>{{ house.title }}</h1>
+        <p>{{ house.location }}</p>
       </div>
       <div class="features_header_2">
         <div class="header_2_area">
           <img src="../assets/icons/area.png" width="25">
-          <h4>{{ area }} m²</h4>
+          <h4>{{ house.area }} m²</h4>
         </div>
         <div class="header_2_rooms">
           <img src="../assets/icons/bed.png" width="25">
-          <h4>{{ rooms }} rooms</h4>
+          <h4>{{ house.rooms }} rooms</h4>
         </div>
       </div>
       <div class="features_header_3">
-        <h2>${{ price }} per month</h2>
+        <h2>${{ house.price }} per month</h2>
       </div>
     </div>
     <div class="feature_items">
       <h2>Features</h2>
       <div class="features_price">
         <p>Rental price</p>
-        <h4>${{ price }} per month</h4>
+        <h4>${{ house.price }} per month</h4>
       </div>
       <div class="features_since">
         <p>Offered since</p>
-        <h4>{{ offered_since }}</h4>
+        <h4>{{ house.date }}</h4>
       </div>
       <div class="features_area">
         <p>Living area</p>
-        <h4>{{ area }} m²</h4>
+        <h4>{{ house.area }} m²</h4>
       </div>
       <div class="features_type">
         <p>Type of house</p>
-        <h4>{{ type }}</h4>
+        <h4>{{ house.type }}</h4>
       </div>
       <div class="features_rooms">
         <p>Number of rooms</p>
-        <h4>{{ rooms }}</h4>
+        <h4>{{ house.rooms }}</h4>
       </div>
       <div class="features_balcony">
         <p>Balcony</p>
-        <h4>{{ balcony }}</h4>
+        <h4>{{ house.balcony }}</h4>
       </div>
       <div class="features_garden">
         <p>Garden</p>
-        <h4>{{ garden }}</h4>
+        <h4>{{ house.garden }}</h4>
       </div>
       <div class="features_garage">
         <p>Garage</p>
-        <h4>{{ garage }}</h4>
+        <h4>{{ house.garage }}</h4>
       </div>
       <div class="features_energy">
         <p>Energy rating</p>
-        <h4>{{ energy }}</h4>
+        <h4>{{ house.energy }}</h4>
       </div>
     </div>
   </div>
@@ -91,6 +89,10 @@ export default {
 .features .feature_items p {
   margin-right: 150px;
   font-size: 20px;
+}
+
+.features h1 {
+  text-transform: capitalize;
 }
 
 .features h2 {

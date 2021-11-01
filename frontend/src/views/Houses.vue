@@ -4,11 +4,10 @@ import Filters from '../components/Filters.vue'
 import Sort from '../components/Sort.vue'
 import HouseCards from '../components/HouseCards.vue'
 import Links from '../components/SocialLinks.vue'
-import Pagination from '../components/Pagination.vue'
 
 export default {
   name: 'Houses',
-  components: { Nav, Filters, Links, HouseCards, Sort, Pagination },
+  components: { Nav, Filters, Links, HouseCards, Sort },
   mounted () {
     window.scrollTo(0, 0)
   }
@@ -25,9 +24,6 @@ export default {
     </div>
     <div class="houses_housecards">
       <HouseCards />
-    </div>
-    <div class="houses_pagination">
-      <Pagination />
     </div>
     <div class="houses_links">
       <Links />
@@ -46,6 +42,5 @@ export default {
 .houses_housecards {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
 }
 </style>

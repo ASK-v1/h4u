@@ -10,14 +10,14 @@ export default {
     <img src="../assets/popular.png" width="100">
     <h2>Popular locations</h2>
     <ul class="cities">
-      <li>New York City</li>
-      <li>Chicago</li>
-      <li>Boston</li>
-      <li>Austin</li>
-      <li>San Francisco</li>
-      <li>Los Angeles</li>
-      <li>Seattle</li>
-      <li>Washington</li>
+      <a href="/houses/chicago"><li>Chicago</li></a>
+      <a href="/houses/austin"><li>Austin</li></a>
+      <a href="/houses/washington"><li>Washington</li></a>
+      <a href="/houses/seattle"><li>Seattle</li></a>
+      <a href="/houses/sanFrancisco"><li>San Francisco</li></a>
+      <a href="/houses/boston"><li>Boston</li></a>
+      <a href="/houses/newYorkCity"><li>New York City</li></a>
+      <a href="/houses/losAngeles"><li>Los Angeles</li></a>
     </ul>
   </div>
   <div v-if="!(this.$store.getters.isLoggedIn)" class="content_2">
@@ -36,6 +36,12 @@ export default {
   text-align: center;
 }
 
+.content .cities a{
+  text-decoration: none;
+}
+.content .cities a:hover{
+  color: black;
+}
 .content_1 {
   margin-left: 15%;
   margin-right: 15%;
@@ -52,6 +58,7 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
 }
+
 .cities li {
   background-image: linear-gradient(#00ffff, #ffffff);
   background-repeat: no-repeat;
@@ -64,22 +71,24 @@ export default {
   cursor: pointer;
   color: #000000;
   font-family: Arial;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
-  padding: 10px;
+  padding: 14px;
   text-decoration: none;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
+  border: 1px solid rgb(122, 122, 122);
 }
 li:hover {
   background-size: 100% 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.01) 0px 2px 15px;
   color: inherit;
 }
 
 .signin {
   display: flex;
   flex-direction: row;
-  border-radius: 5px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.356);
+  border: 1px solid rgb(122, 122, 122);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.01) 0px 2px 15px;
+  border-radius: 15px;
   margin-top: 5%;
   margin-bottom: 5%;
   align-items: center;
@@ -100,10 +109,11 @@ li:hover {
   font-family: Arial;
   font-size: 16px;
   font-weight: bold;
-  padding: 14px 42px;
+  padding: 20px 60px;
   text-decoration: none;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
+  border-radius: 30px;
 }
+
 .signin .signin_button:hover {
   background-color: #77ffff;
 }

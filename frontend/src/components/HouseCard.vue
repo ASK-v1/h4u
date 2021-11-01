@@ -9,18 +9,18 @@ export default {
   data () {
     return {
       num: 0,
-      houses: [],
-      spinner: true,
-      url: []
+      house: {},
+      url: [],
+      spinner: true
     }
   },
   async mounted () {
-    this.houses = await this.getHouses()
-    this.url = this.houses[0].url
+    this.house = await this.getHouse(this.$route.params.houseId)
+    this.url = this.house.url
     this.spinner = false
   },
   methods: {
-    ...mapActions(['getHouses']),
+    ...mapActions(['getHouse']),
     nbutton () {
       ++this.num
     },

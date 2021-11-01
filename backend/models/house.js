@@ -7,7 +7,7 @@ const houseSchema = new Schema({
   price: Number,
   rooms: Number,
   area: Number,
-  date: Date,
+  date: String,
   type: String,
   energy: String,
   balcony: String,
