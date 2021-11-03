@@ -22,6 +22,7 @@ export default createStore({
     logout (state) {
       state.status = ''
       state.token = ''
+      state.userData = ''
     }
   },
   actions: {
@@ -51,6 +52,20 @@ export default createStore({
     },
     async getHouse ({ commit }, id) {
       const req = await axios.get(`http://localhost:3000/houses/house/${id}`)
+      return req.data
+    },
+    async save ({ commit }, user) {
+      const req = await axios.put(`http://localhost:3000/houses/house/${user.houseId}`, user)
+      return req.data
+    },
+    async updateSave ({ commit }, userId) {
+      const req = await axios.get(`http://localhost:3000/users/account/save/${userId}`)
+      const data = req.data
+      commit('auth_user', data.userData)
+      return req.data
+    },
+    async delete ({ commit }, user) {
+      const req = await axios.delete(`http://localhost:3000/users/account/delete/${user.userId}/${user.houseId}`)
       return req.data
     }
   },

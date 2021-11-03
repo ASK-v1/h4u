@@ -2,9 +2,15 @@ var express = require('express')
 var router = express.Router()
 const bcrypt = require('bcrypt')
 const { User } = require('../models/user')
+const { House } = require('../models/house')
 const { SECRET } = require('../key')
 const jwt = require('jsonwebtoken')
 const saltRounds = 10
+
+router.get('/', async (req, res) => {
+  res.send(await User.find())
+})
+
 
 router.post('/register', async (req, res) => {
   const { email, password, firstName, lastName, phone } = req.body
@@ -31,9 +37,25 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
-  res.send(await User.find())
+router.get('/account/save/:userId', async (req, res) => {
+  const { userId } = req.params
+  const userData = await User.findById(userId)
+  
+  if (!userData) return res.status(404)
+  res.json({ userData }).status(201)
 })
 
+
+router.delete('/account/delete/:userId/:houseId', async (req, res) => {
+  const { houseId, userId } = req.params
+  const house = await House.findById(houseId)
+
+  await User.updateOne({ _id: userId }, { $pull: { savedHouse: house } }, 
+    function(err, result) {
+      if (err) res.send(err)
+      else res.send(result)
+    }
+  )
+})
 
 module.exports = router

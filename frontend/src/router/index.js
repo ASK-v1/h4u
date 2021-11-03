@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Account from '../views/Account.vue'
 import Houses from '../views/Houses.vue'
 import House from '../views/House.vue'
+import Save from '../views/Save.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/account',
     name: 'Account',
     component: Account
+  },
+  {
+    path: '/account/save',
+    name: 'Save',
+    component: Save
   }
 ]
 

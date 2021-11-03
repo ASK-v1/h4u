@@ -1,7 +1,7 @@
 <script>
 import Spinner from '../components/Spinner.vue'
 
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'HouseCard',
@@ -14,18 +14,49 @@ export default {
       spinner: true
     }
   },
+  computed: {
+    ...mapGetters(['user'])
+  },
   async mounted () {
     this.house = await this.getHouse(this.$route.params.houseId)
+    await this.check()
     this.url = this.house.url
     this.spinner = false
   },
   methods: {
-    ...mapActions(['getHouse']),
+    ...mapActions(['updateSave', 'getHouse', 'save', 'delete']),
+    async check () {
+      if (this.user) await this.updateSave(this.user._id)
+    },
     nbutton () {
       ++this.num
     },
     pbutton () {
       --this.num
+    },
+    async saveHouse () {
+      const data = {
+        userId: this.user._id,
+        houseId: this.$route.params.houseId
+      }
+      try {
+        await this.save(data)
+        await this.updateSave(this.user._id)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async deleteHouse () {
+      const data = {
+        userId: this.user._id,
+        houseId: this.$route.params.houseId
+      }
+      try {
+        await this.delete(data)
+        await this.updateSave(this.user._id)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }
@@ -48,9 +79,13 @@ export default {
           <h4>{{ url.length }}</h4>
           <p>Photos</p>
         </div>
-        <div class="save">
+        <div v-if="(user) && (user.savedHouse.some(house => house._id === this.$route.params.houseId))" @click="deleteHouse" class="a_save">
           <img src="../assets/icons/heart.png" width="35">
-          <p>Save</p>
+          <p>Unsave</p>
+        </div>
+        <div v-else @click="saveHouse" class="d_save">
+          <img src="../assets/icons/heart.png" width="35">
+          <p>save</p>
         </div>
       </div>
     </div>
@@ -154,7 +189,25 @@ export default {
   height: 50px;
 }
 
-.photos_save .save {
+.photos_save .a_save {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #262636;
+  color: white;
+  border: 1px solid rgb(50, 39, 68);
+  transition: all 0.2s ease-in-out 0s, background 0.3s;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+}
+
+.photos_save .d_save {
   display: flex;
   flex-direction: row;
   margin-top: 5px;
@@ -168,9 +221,12 @@ export default {
   width: 100px;
   height: 50px;
 }
-
-.photos_save .save:hover {
+.photos_save .d_save:hover {
   background-color: #262636;
   color: white;
+}
+.photos_save .a_save:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
 }
 </style>

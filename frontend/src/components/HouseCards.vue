@@ -17,7 +17,7 @@ export default {
     this.spinner = false
   },
   methods: {
-    ...mapActions(['getSearch', 'getUrl']),
+    ...mapActions(['getSearch']),
     async getCitySearch () {
       this.houses = await this.getSearch(this.$route.params.cityName)
     }
@@ -26,42 +26,43 @@ export default {
 </script>
 
 <template>
-<div class="main_card">
-  <div v-if="spinner" class="spinner">
-    <Spinner />
-  </div>
-  <div v-for='house in houses' :key='house.id' class="house_cards">
-    <div class="house_cards_image">
-      <router-link :to="`/houses/house/${house._id}`"><img :src="house.url[0]"/></router-link>
+  <div class="main_card">
+    <div v-if="spinner" class="spinner">
+      <Spinner />
     </div>
-    <div class="house_cards_all">
-      <div class="house_cards_title_location">
-        <div class="house_cards_title">
-          <h2>{{ house.title.charAt(0).toUpperCase() + house.title.slice(1) }}</h2>
-        </div>
-        <div class="house_cards_location">
-          <p>{{ house.location }}</p>
-        </div>
+    <div v-for='house in houses' :key='house.id' class="house_cards">
+      <div class="house_cards_image">
+        <router-link :to="`/houses/house/${house._id}`"><img :src="house.url[0]"/></router-link>
       </div>
-      <div class="house_cards_items">
-        <div class="house_cards_area">
-          <img src="../assets/icons/area.png" width="25">
-          <h3>{{ house.area }} m²</h3>
+      <div class="house_cards_all">
+        <div class="house_cards_title_location">
+          <div class="house_cards_title">
+            <h2>{{ house.title.charAt(0).toUpperCase() + house.title.slice(1) }}</h2>
+          </div>
+          <div class="house_cards_location">
+            <p>{{ house.location }}</p>
+          </div>
         </div>
-        <div class="house_cards_rooms">
-          <img src="../assets/icons/bed.png" width="25">
-          <h3>{{ house.rooms }} rooms</h3>
+        <div class="house_cards_items">
+          <div class="house_cards_area">
+            <img src="../assets/icons/area.png" width="25">
+            <h3>{{ house.area }} m²</h3>
+          </div>
+          <div class="house_cards_rooms">
+            <img src="../assets/icons/bed.png" width="25">
+            <h3>{{ house.rooms }} rooms</h3>
+          </div>
         </div>
-      </div>
-      <div class="house_cards_price">
-        <h2>${{ house.price }} per month</h2>
+        <div class="house_cards_price">
+          <h2>${{ house.price }} per month</h2>
+        </div>
       </div>
     </div>
+    <div v-if="!spinner" class="total">
+      <h2>{{ houses.length }} homes for rent</h2>
+    </div>
+    <div v-if="houses.length === 0" class="space"></div>
   </div>
-  <div v-if="!spinner" class="total">
-    <h2>{{ houses.length }} homes for rent</h2>
-  </div>
-</div>
 </template>
 
 <style>
@@ -125,7 +126,7 @@ export default {
   font-size: 1rem;
 }
 .space {
-  margin-bottom: 25%;
+  margin-bottom: 333px;
 }
 .total {
   margin-top: 50px;

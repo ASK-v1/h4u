@@ -21,7 +21,7 @@ export default {
     async logout () {
       try {
         await this.logoutUser()
-        this.$router.push('login')
+        this.$router.push('/')
       } catch (error) {
         console.log(error)
       }
@@ -37,23 +37,24 @@ export default {
     </div>
     <div class="info">
       <div class="personal">
+        <h2>Account</h2>
         <img src="../assets/icons/account.png">
       </div>
       <div class="name">
         <p>Name</p>
-        <h4>{{ this.user.firstName }}</h4>
+        <h4>{{ user.firstName }}</h4>
       </div>
       <div class="phone">
         <p>Phone</p>
-        <h4>{{ this.user.phone }}</h4>
+        <h4>{{ user.phone }}</h4>
       </div>
       <div class="email">
         <p>Email address</p>
-        <h4>{{ this.user.email }}</h4>
+        <h4>{{ user.email }}</h4>
       </div>
     </div>
     <div class="account_buttons">
-        <button class="account_button_save" type="submit">Saved Houses</button>
+        <a href="/account/save" class="account_button_save">Saved Houses</a>
         <button class="account_button_logout" @click="logout">Log out</button>
     </div>
     <div class="account_links">
@@ -74,6 +75,13 @@ export default {
   gap: 40px;
 }
 
+.account .info .personal{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 10px;
+}
+
 .account .account_buttons {
   display: flex;
   flex-direction: column;
@@ -83,20 +91,35 @@ export default {
   gap: 120px;
 }
 
-.account .account_button_logout {
+.account .account_buttons .account_button_logout {
   background-color: white;
+  border: solid 1px;
   font-family: Arial;
   font-weight: bold;
-  padding: 15px;
+  font-size: small;
+  padding: 10px;
   cursor: pointer;
-  border-color: #ff7777;
+  border-color: rgb(0, 0, 0);
 }
-.account .account_button_save {
-  background-color: white;
+
+.account .account_buttons a {
+  background-color: #00ffff;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.88);
   font-family: Arial;
   font-weight: bold;
-  padding: 15px;
+  font-size: small;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+}
+
+.account .account_buttons .account_button_logout:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px, rgba(0, 0, 0, 0.05) 0px 2px 15px;
+}
+
+.account .account_buttons a:hover {
+  background-color: #77ffff;
   cursor: pointer;
-  border-color: #77ffff;
 }
 </style>
