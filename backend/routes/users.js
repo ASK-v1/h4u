@@ -50,12 +50,11 @@ router.delete('/account/delete/:userId/:houseId', async (req, res) => {
   const { houseId, userId } = req.params
   const house = await House.findById(houseId)
 
-  await User.updateOne({ _id: userId }, { $pull: { savedHouse: house } }, 
-    function(err, result) {
-      if (err) res.send(err)
-      else res.send(result)
-    }
-  )
+  const update = await User.updateOne({ _id: userId }, { $pull: { savedHouse: house } }) 
+  
+  if (!update) return res.status(404)
+  res.send(update)
 })
+
 
 module.exports = router

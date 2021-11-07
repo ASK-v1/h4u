@@ -67,6 +67,22 @@ export default createStore({
     async delete ({ commit }, user) {
       const req = await axios.delete(`http://localhost:3000/users/account/delete/${user.userId}/${user.houseId}`)
       return req.data
+    },
+    async getRoom ({ commit }, filter) {
+      const req = await axios.get(`http://localhost:3000/houses/filterRoom/${filter.room}/${filter.cityName}`)
+      return req.data
+    },
+    async getPrice ({ commit }, filter) {
+      const req = await axios.get(`http://localhost:3000/houses/filterPrice/${filter.price}/${filter.cityName}`)
+      return req.data
+    },
+    async getArea ({ commit }, filter) {
+      const req = await axios.get(`http://localhost:3000/houses/filterArea/${filter.area}/${filter.cityName}`)
+      return req.data
+    },
+    async getType ({ commit }, filter) {
+      const req = await axios.get(`http://localhost:3000/houses/filterType/${filter.type}/${filter.cityName}`)
+      return req.data
     }
   },
   getters: {

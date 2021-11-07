@@ -1,35 +1,12 @@
 <script>
-import Spinner from '../components/Spinner.vue'
-
-import { mapActions } from 'vuex'
-
 export default {
   name: 'HouseCards',
-  components: { Spinner },
-  data () {
-    return {
-      houses: [],
-      spinner: true
-    }
-  },
-  async mounted () {
-    await this.getCitySearch()
-    this.spinner = false
-  },
-  methods: {
-    ...mapActions(['getSearch']),
-    async getCitySearch () {
-      this.houses = await this.getSearch(this.$route.params.cityName)
-    }
-  }
+  props: ['houses']
 }
 </script>
 
 <template>
   <div class="main_card">
-    <div v-if="spinner" class="spinner">
-      <Spinner />
-    </div>
     <div v-for='house in houses' :key='house.id' class="house_cards">
       <div class="house_cards_image">
         <router-link :to="`/houses/house/${house._id}`"><img :src="house.url[0]"/></router-link>
@@ -58,7 +35,7 @@ export default {
         </div>
       </div>
     </div>
-    <div v-if="!spinner" class="total">
+    <div class="total">
       <h2>{{ houses.length }} homes for rent</h2>
     </div>
     <div v-if="houses.length === 0" class="space"></div>

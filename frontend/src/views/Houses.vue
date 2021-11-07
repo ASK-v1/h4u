@@ -1,13 +1,17 @@
 <script>
 import Nav from '../components/Nav.vue'
 import Filters from '../components/Filters.vue'
-import Sort from '../components/Sort.vue'
 import HouseCards from '../components/HouseCards.vue'
 import Links from '../components/SocialLinks.vue'
 
 export default {
   name: 'Houses',
-  components: { Nav, Filters, Links, HouseCards, Sort },
+  components: { Nav, Filters, Links, HouseCards },
+  data () {
+    return {
+      filterHouses: ''
+    }
+  },
   mounted () {
     window.scrollTo(0, 0)
   }
@@ -18,12 +22,11 @@ export default {
     <div class="houses_nav">
       <Nav />
     </div>
-    <div class="houses_filters_sort">
-      <Filters />
-      <Sort />
+    <div class="houses_filters">
+      <Filters @sendFilterData="filterHouses = $event" />
     </div>
     <div class="houses_housecards">
-      <HouseCards />
+      <HouseCards :houses = "filterHouses" />
     </div>
     <div class="houses_links">
       <Links />
@@ -32,9 +35,7 @@ export default {
 </template>
 
 <style>
-.houses_filters_sort {
-  display: flex;
-  justify-content: space-between;
+.houses_filters {
   padding: 20px;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.16);
 }
