@@ -1,5 +1,5 @@
 const { connect } = require('mongoose')
+const { mongoURI } = require('./keys')
 
-const connectionString = process.env.MONGODB_CONNECTION_STRING || 'mongodb+srv://ahmet:1231993@cluster0.2wa3x.mongodb.net'
-
+const connectionString = process.env.MONGODB_CONNECTION_STRING || mongoURI
 connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
