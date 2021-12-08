@@ -1,13 +1,15 @@
 <script>
 export default {
   name: 'HouseCards',
-  props: ['houses']
+  props: {
+    houses: Array
+  }
 }
 </script>
 
 <template>
   <div class="main_card">
-    <div v-for='house in houses' :key='house.id' class="house_cards">
+    <div v-for='house in houses[this.$route.params.page]' :key='house.id' class="house_cards">
       <div class="house_cards_image">
         <router-link :to="`/houses/house/${house._id}`"><img :src="house.url[0]"/></router-link>
       </div>
@@ -35,10 +37,6 @@ export default {
         </div>
       </div>
     </div>
-    <div class="total">
-      <h2>{{ houses.length }} homes for rent</h2>
-    </div>
-    <div v-if="houses.length === 0" class="space"></div>
   </div>
 </template>
 
@@ -101,13 +99,5 @@ export default {
   color: #999999;
   font-weight: bold;
   font-size: 1rem;
-}
-.space {
-  margin-bottom: 333px;
-}
-.total {
-  margin-top: 50px;
-  text-align: center;
-  color: #999999;
 }
 </style>

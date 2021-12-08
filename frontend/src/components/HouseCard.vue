@@ -1,17 +1,14 @@
 <script>
-import Spinner from '../components/Spinner.vue'
-
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'HouseCard',
-  components: { Spinner },
   data () {
     return {
       num: 0,
       house: {},
       url: [],
-      spinner: true
+      bool: Boolean
     }
   },
   computed: {
@@ -19,9 +16,9 @@ export default {
   },
   async mounted () {
     this.house = await this.getHouse(this.$route.params.houseId)
-    await this.check()
     this.url = this.house.url
-    this.spinner = false
+    await this.check()
+    this.bool = this.user.savedHouse.some(house => house._id === this.$route.params.houseId)
   },
   methods: {
     ...mapActions(['updateSave', 'getHouse', 'save', 'delete']),
@@ -45,6 +42,7 @@ export default {
       } catch (error) {
         console.log(error)
       }
+      this.$router.go()
     },
     async deleteHouse () {
       const data = {
@@ -57,6 +55,7 @@ export default {
       } catch (error) {
         console.log(error)
       }
+      this.$router.go()
     }
   }
 }
@@ -64,22 +63,19 @@ export default {
 
 <template>
   <div class="house_card">
-    <div v-if="spinner" class="spinner">
-      <Spinner />
-    </div>
     <div class="gallery_button">
-      <button v-if="!(num === 0)" @click="pbutton" class="a_button">«</button>
+      <button v-if="(num !== 0)" @click="pbutton" class="a_button">«</button>
       <button v-else class="na_button">«</button>
     </div>
     <div class="photo_1">
-      <a v-if="(num === 0)" class="kucuk" :href="url[num]"><img :src="url[num]"></a>
-      <a v-else class="buyuk" :href="url[num]"><img :src="url[num]"></a>
+      <a v-if="(num === 0)" class="small" :href="url[num]"><img :src="url[num]"></a>
+      <a v-else class="large" :href="url[num]"><img :src="url[num]"></a>
       <div class="photos_save">
         <div class="photos">
           <h4>{{ url.length }}</h4>
           <p>Photos</p>
         </div>
-        <div v-if="(user) && (user.savedHouse.some(house => house._id === this.$route.params.houseId))" @click="deleteHouse" class="a_save">
+        <div v-if="user && bool" @click="deleteHouse" class="a_save">
           <img src="../assets/icons/heart.png" width="35">
           <p>Unsave</p>
         </div>
@@ -94,7 +90,7 @@ export default {
       <a v-if="num === 0" :href="url[num+2]"><img :src="url[num+2]"></a>
     </div>
     <div class="gallery_button">
-      <button v-if="!(num === url.length - 1)" @click="nbutton" class="a_button">»</button>
+      <button v-if="num !== url.length - 1" @click="nbutton" class="a_button">»</button>
       <button class="na_button" v-else>»</button>
     </div>
   </div>
@@ -111,14 +107,14 @@ export default {
   margin-bottom: 1%;
 }
 
-.house_card .photo_1 .buyuk img {
+.house_card .photo_1 .large img {
   width: 60vw;
   height: 30vw;
   border-radius: 10px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
 }
 
-.house_card .photo_1 .kucuk img {
+.house_card .photo_1 .small img {
   width: 40vw;
   height: 30vw;
   border-radius: 10px;
@@ -221,10 +217,12 @@ export default {
   width: 100px;
   height: 50px;
 }
+
 .photos_save .d_save:hover {
   background-color: #262636;
   color: white;
 }
+
 .photos_save .a_save:hover {
   background-color: #ffffff;
   color: rgb(0, 0, 0);

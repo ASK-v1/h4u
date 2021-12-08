@@ -14,7 +14,7 @@ export default {
   <h1>Search properties to rent</h1>
   <p>The leading rental website in the USA</p>
   <input type="text" placeholder="Search city, neighbourhood, adress" v-model="cityName"/>
-  <router-link v-if="cityName" :to="`/houses/${cityName}`" class="search_button">Search</router-link>
+  <router-link v-if="cityName" :to="`/houses/${cityName}/1`" class="search_button">Search</router-link>
   <router-link v-else  to="/" class="search_button">Search</router-link>
 </div>
 </template>

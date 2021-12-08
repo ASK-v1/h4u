@@ -3,16 +3,20 @@ import Nav from '../components/Nav.vue'
 import Filters from '../components/Filters.vue'
 import HouseCards from '../components/HouseCards.vue'
 import Links from '../components/SocialLinks.vue'
+import Pagination from '../components/Pagination.vue'
+import Results from '../components/Results.vue'
 
 export default {
   name: 'Houses',
-  components: { Nav, Filters, Links, HouseCards },
+  components: { Nav, Filters, Links, HouseCards, Pagination, Results },
   data () {
     return {
-      filterHouses: ''
+      filterHouses: [],
+      pageHouses: Number,
+      total: Number
     }
   },
-  mounted () {
+  updated () {
     window.scrollTo(0, 0)
   }
 }
@@ -23,10 +27,16 @@ export default {
       <Nav />
     </div>
     <div class="houses_filters">
-      <Filters @sendFilterData="filterHouses = $event" />
+      <Filters @sendFilterData="filterHouses = $event" @sendPageData="pageHouses = $event" @sendTotal="total = $event"/>
     </div>
     <div class="houses_housecards">
       <HouseCards :houses = "filterHouses" />
+    </div>
+    <div class="houses_results">
+      <Results :total = "total" />
+    </div>
+    <div class="houses_pagination">
+      <Pagination :pages = "pageHouses"/>
     </div>
     <div class="houses_links">
       <Links />
@@ -43,5 +53,9 @@ export default {
 .houses_housecards {
   display: flex;
   justify-content: center;
+}
+
+.houses_links {
+  margin-top: 300px;
 }
 </style>

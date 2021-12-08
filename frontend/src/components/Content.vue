@@ -10,14 +10,14 @@ export default {
     <img src="../assets/popular.png" width="100">
     <h2>Popular locations</h2>
     <ul class="cities">
-      <a href="/houses/chicago"><li>Chicago</li></a>
-      <a href="/houses/austin"><li>Austin</li></a>
-      <a href="/houses/washington"><li>Washington</li></a>
-      <a href="/houses/seattle"><li>Seattle</li></a>
-      <a href="/houses/sanFrancisco"><li>San Francisco</li></a>
-      <a href="/houses/boston"><li>Boston</li></a>
-      <a href="/houses/newYorkCity"><li>New York City</li></a>
-      <a href="/houses/losAngeles"><li>Los Angeles</li></a>
+      <a href="/houses/chicago/1"><li>Chicago</li></a>
+      <a href="/houses/austin/1"><li>Austin</li></a>
+      <a href="/houses/washington/1"><li>Washington</li></a>
+      <a href="/houses/seattle/1"><li>Seattle</li></a>
+      <a href="/houses/sanFrancisco/1"><li>San Francisco</li></a>
+      <a href="/houses/boston/1"><li>Boston</li></a>
+      <a href="/houses/newYorkCity/1"><li>New York City</li></a>
+      <a href="/houses/losAngeles/1"><li>Los Angeles</li></a>
     </ul>
   </div>
   <div v-if="!(this.$store.getters.isLoggedIn)" class="content_2">

@@ -1,5 +1,6 @@
 <script>
 import Spinner from '../components/Spinner.vue'
+import router from '@/router'
 
 import { mapActions } from 'vuex'
 
@@ -17,17 +18,21 @@ export default {
       price: 'no',
       area: 'no',
       type: 'no',
-      spinner: true
+      spinner: true,
+      getPageHouses: [],
+      NumberOfPages: Number
     }
   },
   methods: {
     ...mapActions(['getRoom', 'getPrice', 'getArea', 'getType']),
+
     intersection (room, price, area, type) {
       const i1 = room.filter(item1 => price.some(item2 => item1._id === item2._id))
       const i2 = area.filter(item3 => type.some(item4 => item3._id === item4._id))
       const i12 = i1.filter(i1 => i2.some(i2 => i1._id === i2._id))
       this.filterHouses = i12
     },
+
     async sendData () {
       const data = {
         cityName: this.$route.params.cityName,
@@ -36,12 +41,33 @@ export default {
         area: this.area,
         type: this.type
       }
+
       this.filterRoom = await this.getRoom(data)
       this.filterPrice = await this.getPrice(data)
       this.filterArea = await this.getArea(data)
       this.filterType = await this.getType(data)
       this.intersection(this.filterRoom, this.filterPrice, this.filterArea, this.filterType)
-      this.$emit('sendFilterData', this.filterHouses)
+
+      this.getPagination()
+
+      this.$emit('sendFilterData', this.getPageHouses)
+    },
+    getPagination () {
+      this.checkFloat(this.filterHouses.length)
+      this.$emit('sendTotal', this.filterHouses.length)
+      this.$emit('sendPageData', this.NumberOfPages)
+      router.push({ name: 'Houses', params: { page: 1 } })
+      this.getPage(this.filterHouses)
+    },
+    getPage (page) {
+      for (let i = 1; i < 5; i++) {
+        this.getPageHouses[i] = page.splice(0, 5)
+      }
+    },
+    checkFloat (num) {
+      const bool = !!((num / 5) % 1)
+      if (bool) this.NumberOfPages = Math.floor(num / 5) + 1
+      else this.NumberOfPages = (num / 5)
     }
   },
   async mounted () {
@@ -81,7 +107,7 @@ export default {
           <option value="1500">$1500 to 2000</option>
           <option value="2000">$2000 to $3000</option>
           <option value="3000">$3000 to $4000</option>
-          <option value="[4000,5000]">$4000 to $5000</option>
+          <option value="4000">$4000 to $5000</option>
         </select>
       </div>
       <div class="filters_area">
